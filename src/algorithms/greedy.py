@@ -64,7 +64,6 @@ class CVRPNearestNeighbor:
                 self.graph.get_coordinates(self.graph.get_depot())
             )
             self.routes.append(route)
-        print("Total cost of the solution:", total_cost)
         return self.routes, total_cost
         # self.save_results(self.routes, total_cost)
 

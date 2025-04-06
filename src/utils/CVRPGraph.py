@@ -103,11 +103,12 @@ class CVRPGraph:
                 self.depot = 1
 
         # Add edges with Euclidean distance as weight
-        for node1, (x1, y1) in node_positions.items():
-            for node2, (x2, y2) in node_positions.items():
-                if node1 != node2:
-                    distance = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
-                    self.add_edge(node1, node2, distance)
+        for v in self.graph.nodes:
+            for u in self.graph.nodes:
+                if v < u:
+                    self.add_edge(v, u, self.euclidean_distance(self.graph.nodes[v]['pos'], self.graph.nodes[u]['pos']))
+
+
 
     def get_graph(self):
         return self.graph
